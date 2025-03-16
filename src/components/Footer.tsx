@@ -59,7 +59,7 @@ const Footer = () => {
           {/* Copyright */}
           <Box mt={3} textAlign="center">
             <Typography variant="body2" color="gray">
-              © {new Date().getFullYear()} Mi Empresa. Todos los derechos reservados.
+              © {new Date().getFullYear()} Xisa Development. Todos los derechos reservados.
             </Typography>
           </Box>
         </Container>

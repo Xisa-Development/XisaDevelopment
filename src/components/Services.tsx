@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { Grid, Typography, Box, Card, CardContent, Container } from '@mui/material';
 
 const services = [
-  { title: 'eCommerce', icon: '🛒', description: 'Desarrollamos tiendas online personalizadas y funcionales, optimizadas para ofrecer una experiencia de compra intuitiva y segura. Desde el diseño de la tienda hasta la integración de pasarelas de pago.' },
-  { title: 'Desarrollo Web', icon: '💻', description: 'Creamos sitios web a medida, con un diseño atractivo y funcionalidades adaptadas a las necesidades de tu negocio. Ya sea un sitio institucional o un blog, nos encargamos de crear una presencia en línea profesional y efectiva.' },
-  { title: 'Diseños Digitales', icon: '🎨', description: 'Diseñamos soluciones visuales para mejorar la imagen digital de tu marca. Desde logotipos hasta gráficos para redes sociales, creamos contenido visual que conecte con tu audiencia y haga destacar tu negocio en el mundo digital.'  },
+  { title: 'eCommerce', image: './assets/img/ecommers.png', description: 'Desarrollamos tiendas online personalizadas y funcionales, optimizadas para ofrecer una experiencia de compra intuitiva y segura. Desde el diseño de la tienda hasta la integración de pasarelas de pago.' },
+  { title: 'Desarrollo Web', image: './assets/img/web.png', description: 'Creamos sitios web a medida, con un diseño atractivo y funcionalidades adaptadas a las necesidades de tu negocio. Ya sea un sitio institucional o un blog, nos encargamos de crear una presencia en línea profesional y efectiva.' },
+  { title: 'Diseños Digitales', image: './assets/img/design.png', description: 'Diseñamos soluciones visuales para mejorar la imagen digital de tu marca. Desde logotipos hasta gráficos para redes sociales, creamos contenido visual que conecte con tu audiencia y haga destacar tu negocio en el mundo digital.'  },
 ];
 
 const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => (
@@ -26,9 +26,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
         }}
       >
         <CardContent sx={{ p: 4 }}>
-          <Typography variant="h3" sx={{ mb: 2 }}>
-            {service.icon}
-          </Typography>
+        <img src={service.image} alt={service.title} style={{ width: "150px", height: "150px" }} />
           <Typography variant="h5" sx={{ mb: 2 }}>
             {service.title}
           </Typography>
