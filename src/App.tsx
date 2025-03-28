@@ -1,39 +1,17 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { AnimatePresence } from "framer-motion";
 import { AppLayout } from "./components/Layout";
-
-const theme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: { main: "#d30da1" },
-    secondary: { main: "#13aaf0" },
-  },
-  typography: {
-    fontFamily: "Inter, Arial, sans-serif",
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: "8px",
-          textTransform: "none",
-          fontWeight: 600,
-        },
-      },
-    },
-  },
-});
+import { theme } from "./theme/theme";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <div style={{background: theme.colors.background}}>
       <Router>
         <AnimatePresence mode="wait">
           <AppLayout />
         </AnimatePresence>
       </Router>
-    </ThemeProvider>
+    </div>
   );
 }
 

@@ -1,89 +1,50 @@
 import { motion } from 'framer-motion';
-import { Box, Typography, Button, useTheme, Container } from '@mui/material';
+import { theme } from '../theme/theme';
+
 
 export const HeroSection = () => {
-  const theme = useTheme();
-
   return (
-    <Box
-      component="section"
-      sx={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
-        overflow: 'hidden',
-        backgroundImage: 'url(./assets/img/header.jpg)',  // Imagen de fondo
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-      }}
+    <section
+      className="relative min-h-screen flex items-center bg-fixed bg-center bg-cover"
+      style={{ backgroundImage: "url('./assets/img/header.jpg')" }}
     >
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'rgba(0, 0, 0, 0.4)',  // Filtro semitransparente
-          backdropFilter: 'blur(2px)',  // Desenfoque en el fondo
-          zIndex: 0,
-        }}
-      />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0" />
+
+      {/* Contenido */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, type: 'spring' }}
-        style={{
-          position: 'relative',
-          zIndex: 1,
-          padding: theme.spacing(4),
-          width: '100%',
-          color: '#fff'
-        }}
+        className="relative z-10 w-full text-white px-4 sm:px-6 lg:px-8"
       >
-        <Container maxWidth="lg">
-          <Typography
-            component={motion.h1}
-            variant="h1"
-            sx={{
-              fontSize: 'clamp(2.5rem, 8vw, 5rem)',
-              lineHeight: 1.2,
-              mb: 3
-            }}
+        <div className="max-w-7xl mx-auto">
+          <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6"
           >
             Creando experiencias
-            <Box
-              component="span"
-              sx={{ color: 'primary.main', display: 'block' }}
-            >
-              digitales memorables
-            </Box>
-          </Typography>
+            <span className="block text-primary" style={{color: theme.colors.primary}}>digitales memorables</span>
+          </motion.h1>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <Button
-              component={motion.button}
-              variant="contained"
-              size="large"
+            <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              sx={{ px: 6, py: 2 }}
+              style={{ backgroundColor: theme.colors.primary }}
+              className="bg-primary text-white text-lg font-semibold px-6 py-3 rounded-md transition-all"
             >
               Ver proyectos
-            </Button>
+            </motion.button>
           </motion.div>
-        </Container>
+        </div>
       </motion.div>
-    </Box>
-
+    </section>
   );
 };

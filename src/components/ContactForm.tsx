@@ -1,41 +1,30 @@
 import { motion } from 'framer-motion';
-import { Box, Typography, Container, TextField, Button, Grid } from '@mui/material';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { theme } from '../theme/theme';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Campo requerido'),
   email: Yup.string().email('Email inválido').required('Campo requerido'),
-  message: Yup.string().required('Campo requerido')
+  message: Yup.string().required('Campo requerido'),
 });
 
 export const ContactSection = () => (
-  <Box 
-    component="section" 
-    id="contact" 
-    sx={{ 
-      py: 12,
-      bgcolor: 'background.default',
-      position: 'relative',
-      overflow: 'hidden'
-    }}
-  >
-    <Container maxWidth="lg">
+  <section id="contact" className="py-24 bg-background relative overflow-hidden">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <Typography 
-          variant="h2" 
-          align="center" 
-          sx={{ mb: 8 }}
-          component={motion.h2}
+        <motion.h2
           initial={{ y: 50 }}
           whileInView={{ y: 0 }}
+          className="text-4xl font-bold text-center mb-16"
+               style={{color: theme.colors.white}}
         >
           Contacto
-        </Typography>
+        </motion.h2>
 
         <Formik
           initialValues={{ name: '', email: '', message: '' }}
@@ -47,68 +36,53 @@ export const ContactSection = () => (
         >
           {({ isSubmitting }) => (
             <Form>
-              <Grid container spacing={4}>
-                <Grid item xs={12} md={6}>
-                  <motion.div initial={{ x: -50 }} whileInView={{ x: 0 }}>
-                    <Field
-                      name="name"
-                      as={TextField}
-                      fullWidth
-                      label="Nombre"
-                      variant="outlined"
-                      sx={{ mb: 2 }}
-                    />
-                  </motion.div>
-                </Grid>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <motion.div initial={{ x: -50 }} whileInView={{ x: 0 }}>
+                  <Field
+                    name="name"
+                    placeholder="Nombre"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  <ErrorMessage name="name" component="div" className="text-sm text-red-500 mt-1" />
+                </motion.div>
 
-                <Grid item xs={12} md={6}>
-                  <motion.div initial={{ x: 50 }} whileInView={{ x: 0 }}>
-                    <Field
-                      name="email"
-                      as={TextField}
-                      fullWidth
-                      label="Email"
-                      variant="outlined"
-                      sx={{ mb: 2 }}
-                    />
-                  </motion.div>
-                </Grid>
+                <motion.div initial={{ x: 50 }} whileInView={{ x: 0 }}>
+                  <Field
+                    name="email"
+                    placeholder="Email"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  <ErrorMessage name="email" component="div" className="text-sm text-red-500 mt-1" />
+                </motion.div>
 
-                <Grid item xs={12}>
-                  <motion.div initial={{ y: 50 }} whileInView={{ y: 0 }}>
-                    <Field
-                      name="message"
-                      as={TextField}
-                      fullWidth
-                      label="Mensaje"
-                      variant="outlined"
-                      multiline
-                      rows={4}
-                    />
-                  </motion.div>
-                </Grid>
+                <motion.div initial={{ y: 50 }} whileInView={{ y: 0 }} className="md:col-span-2">
+                  <Field
+                    as="textarea"
+                    name="message"
+                    placeholder="Mensaje"
+                    rows={4}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  <ErrorMessage name="message" component="div" className="text-sm text-red-500 mt-1" />
+                </motion.div>
 
-                <Grid item xs={12}>
-                  <Box display="flex" justifyContent="center">
-                    <Button
-                      component={motion.button}
-                      type="submit"
-                      variant="contained"
-                      size="large"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      sx={{ px: 8 }}
-                      disabled={isSubmitting}
-                    >
-                      Enviar mensaje
-                    </Button>
-                  </Box>
-                </Grid>
-              </Grid>
+                <div className="md:col-span-2 flex justify-center mt-6">
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    disabled={isSubmitting}
+                    style={{background: theme.colors.primary}}
+                    className="bg-primary text-white font-semibold rounded-md px-10 py-3 transition-all duration-200 disabled:opacity-50"
+                  >
+                    Enviar mensaje
+                  </motion.button>
+                </div>
+              </div>
             </Form>
           )}
         </Formik>
       </motion.div>
-    </Container>
-  </Box>
+    </div>
+  </section>
 );

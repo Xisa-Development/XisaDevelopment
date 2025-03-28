@@ -1,70 +1,79 @@
 import { motion } from "framer-motion";
-import { Grid, Typography, Box, Container, IconButton } from "@mui/material";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <motion.div
+    <motion.footer
+      id="footer"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
+      className="bg-neutral-900 text-white py-10"
     >
-      <Box component="footer" id='footer' sx={{ bgcolor: "#212121", color: "white", py: 4 }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={3} justifyContent="center" textAlign="center">
-            {/* Información de la empresa */}
-            <Grid item xs={12} md={4}>
-              <Typography variant="h6" gutterBottom>
-                Xisa Development
-              </Typography>
-              <Typography variant="body2" color="gray">
-                Desarrollo de páginas web y servicios digitales.
-              </Typography>
-            </Grid>
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+          {/* Información de la empresa */}
+          <div>
+            <h6 className="text-lg font-semibold mb-2">Xisa Development</h6>
+            <p className="text-sm text-gray-400">
+              Desarrollo de páginas web y servicios digitales.
+            </p>
+          </div>
 
-            {/* Enlaces de navegación */}
-            <Grid item xs={12} md={4}>
-              <Typography variant="h6" gutterBottom>
-                Enlaces
-              </Typography>
-              <Typography variant="body2" component="a" href="#portfolio" sx={{ display: "block", color: "gray", textDecoration: "none", '&:hover': { color: "white" } }}>
-                Proyectos
-              </Typography>
-              <Typography variant="body2" component="a" href="#services" sx={{ display: "block", color: "gray", textDecoration: "none", '&:hover': { color: "white" } }}>
-                Servicios
-              </Typography>
-              <Typography variant="body2" component="a" href="#contact" sx={{ display: "block", color: "gray", textDecoration: "none", '&:hover': { color: "white" } }}>
-                Contacto
-              </Typography>
-            </Grid>
+          {/* Enlaces de navegación */}
+          <div>
+            <h6 className="text-lg font-semibold mb-2">Enlaces</h6>
+            <ul className="space-y-1 text-sm text-gray-400">
+              <li>
+                <a
+                  href="#portfolio"
+                  className="hover:text-white transition-colors"
+                >
+                  Proyectos
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="hover:text-white transition-colors"
+                >
+                  Servicios
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  className="hover:text-white transition-colors"
+                >
+                  Contacto
+                </a>
+              </li>
+            </ul>
+          </div>
 
-            {/* Redes Sociales */}
-            <Grid item xs={12} md={4}>
-              <Typography variant="h6" gutterBottom>
-                Síguenos
-              </Typography>
-              <Box>
-                <IconButton href="#" sx={{ color: "white", '&:hover': { color: "#1877F2" } }}>
-                  <FaFacebook size={24} />
-                </IconButton>
-                <IconButton href="#" sx={{ color: "white", '&:hover': { color: "#1DA1F2" } }}>
-                  <FaTwitter size={24} />
-                </IconButton>
-                <IconButton href="#" sx={{ color: "white", '&:hover': { color: "#E1306C" } }}>
-                  <FaInstagram size={24} />
-                </IconButton>
-              </Box>
-            </Grid>
-          </Grid>
-          {/* Copyright */}
-          <Box mt={3} textAlign="center">
-            <Typography variant="body2" color="gray">
-              © {new Date().getFullYear()} Xisa Development. Todos los derechos reservados.
-            </Typography>
-          </Box>
-        </Container>
-      </Box>
-    </motion.div>
+          {/* Redes Sociales */}
+          <div>
+            <h6 className="text-lg font-semibold mb-2">Síguenos</h6>
+            <div className="flex justify-center md:justify-start space-x-4">
+              <a href="#" className="text-white hover:text-[#1877F2] transition-colors">
+                <FaFacebook size={24} />
+              </a>
+              <a href="#" className="text-white hover:text-[#1DA1F2] transition-colors">
+                <FaTwitter size={24} />
+              </a>
+              <a href="#" className="text-white hover:text-[#E1306C] transition-colors">
+                <FaInstagram size={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-8 text-center text-sm text-gray-400">
+          © {new Date().getFullYear()} Xisa Development. Todos los derechos reservados.
+        </div>
+      </div>
+    </motion.footer>
   );
 };
 

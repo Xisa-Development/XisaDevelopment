@@ -1,11 +1,3 @@
-import {
-  AppBar,
-  Toolbar,
-  Container,
-  CssBaseline,
-  Box,
-  useScrollTrigger,
-} from "@mui/material";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { HeroSection } from "./Hero";
@@ -14,7 +6,7 @@ import { ContactSection } from "./ContactForm";
 import { PortfolioSection } from "./PortfolioItem";
 import Footer from "./Footer";
 import { Loader } from "./Loader";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { path: "/", label: "Inicio" },
@@ -25,93 +17,88 @@ const navLinks = [
 
 const NavButton = ({ path, label }: { path: string; label: string }) => {
   const location = useLocation();
+  const isActive = location.hash === path;
 
   return (
     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-      <Box
-        component={Link}
+      <Link
+        
         to={path.slice(1)}
-        sx={{
-          px: 3,
-          py: 1,
-          borderRadius: 2,
-          color: location.hash === path ? "primary.main" : "text.primary",
-          textDecoration: "none",
-          transition: "all 0.3s",
-          bgcolor:
-            location.hash === path ? "black" : "transparent",
-        }}
+        className={`px-4 py-2 rounded-md transition-all duration-300 ${
+          isActive
+            ? "color: theme.colors.primary"
+            : "text-gray-300 hover:text-primary"
+        }`}
+        
       >
         {label}
-      </Box>
+      </Link>
     </motion.div>
   );
 };
 
 export const AppLayout = () => {
-  const trigger = useScrollTrigger({ threshold: 100 });
   const [loading, setLoading] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      //setData("");
-      setLoading(false); // Desactiva el loader después de que los datos se cargan
-    }, 3000); // Simulando una carga de datos
+    // Simula carga
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 100);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-    {loading ? <Loader /> : null}
+      {loading ? <Loader /> : null}
 
-    {!loading && (
-      <>
-      <CssBaseline />
-      <AppBar
-        component={motion.nav}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 200 }}
-        sx={{
-          backdropFilter: trigger ? "blur(10px)" : "none",
-          bgcolor: trigger ? "rgba(0, 0, 0, 0.979)" : "transparent",
-          boxShadow: "none",
-        }}
-      >
-        <Toolbar>
-          <Container
-            maxWidth="lg"
-            sx={{ display: "flex", alignItems: "center" }}
+      {!loading && (
+        <>
+          {/* NAVBAR */}
+          <motion.nav
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ type: "spring", stiffness: 200 }}
+            className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+              scrolled ? "bg-black/90 backdrop-blur-md" : "bg-transparent"
+            }`}
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              <Box
-                component="img"
-                src="./assets/img/logo-sinfondo.png"
-                alt="Logo"
-                sx={{ height: 90, mr: 4 }}
-              />
-            </motion.div>
+            <div className="max-w-7xl mx-auto flex items-center px-4 py-3">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                <img
+                  src="./assets/img/logo-sinfondo.png"
+                  alt="Logo"
+                  className="h-20 mr-6"
+                />
+              </motion.div>
 
-            <Box sx={{ display: "flex", gap: 1, ml: "auto" }}>
-              {navLinks.map((link) => (
-                <NavButton key={link.path} {...link} />
-              ))}
-            </Box>
-          </Container>
-        </Toolbar>
-      </AppBar>
+              <div className="ml-auto flex gap-2">
+                {navLinks.map((link) => (
+                  <NavButton key={link.path} {...link} />
+                ))}
+              </div>
+            </div>
+          </motion.nav>
 
-      
-        <HeroSection />
-        <ServicesSection />
-        <PortfolioSection />
-        <ContactSection />
-        <Footer />
-      </>
-    )}
-  </>
-);
-}
+          {/* SECCIONES */}
+          <main className="pt-28">
+            <HeroSection />
+            <ServicesSection />
+            <PortfolioSection />
+            <ContactSection />
+            <Footer />
+          </main>
+        </>
+      )}
+    </>
+  );
+};

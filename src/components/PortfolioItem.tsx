@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Grid, Typography, Box, Card, CardMedia, Container } from '@mui/material';
+import { theme } from '../theme/theme';
 
 const projects = [
   { id: 1, title: 'E-commerce Platform', category: 'Web', image: '/proj1.jpg' },
@@ -14,56 +14,46 @@ const projects = [
 ];
 
 export const PortfolioSection = () => (
-  <Box component="section" sx={{ py: 12 }} id='portfolio'>
-    <Container maxWidth="lg">
-      <Typography 
-        variant="h2" 
-        align="center" 
-        sx={{ mb: 8 }}
-        component={motion.h2}
+  <section id="portfolio" className="py-24">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.h2
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        style={{color: theme.colors.white}}
+        className="text-4xl font-bold text-center mb-16"
       >
         Nuestros Proyectos
-      </Typography>
+      </motion.h2>
 
-      <Grid container spacing={4}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
-          <Grid item xs={12} md={6} lg={4} key={project.id}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: '0px 0px -100px 0px' }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Card
-                component={motion.div}
-                whileHover={{ scale: 1.02 }}
-                sx={{ 
-                  borderRadius: 4,
-                  overflow: 'hidden',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
-                }}
-              >
-                <CardMedia
-                  component={motion.img}
-                  src={project.image}
-                  alt={project.title}
-                  sx={{ height: 300 }}
-                  whileHover={{ scale: 1.1 }}
-                />
-                
-                <Box sx={{ p: 3 }}>
-                  <Typography variant="body2" color="primary.main">
-                    {project.category}
-                  </Typography>
-                  <Typography variant="h6">{project.title}</Typography>
-                </Box>
-              </Card>
-            </motion.div>
-          </Grid>
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-100px 0px' }}
+            transition={{ delay: index * 0.1 }}
+            whileHover={{ scale: 1.02 }}
+            className="bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden shadow-lg transition-transform"
+          >
+            <motion.img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-72 object-cover"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
+            />
+
+            <div className="p-6">
+              <p className="text-primary text-sm font-medium mb-1">
+                {project.category}
+              </p>
+              <h3 className="text-lg font-semibold">{project.title}</h3>
+            </div>
+          </motion.div>
         ))}
-      </Grid>
-    </Container>
-  </Box>
+      </div>
+    </div>
+  </section>
 );
