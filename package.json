@@ -13,7 +13,7 @@
     "@formkit/auto-animate": "^0.8.2",
     "@tailwindcss/vite": "^4.0.17",
     "formik": "^2.4.6",
-    "framer-motion": "^12.4.10",
+    "framer-motion": "^12.6.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",

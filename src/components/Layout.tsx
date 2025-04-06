@@ -21,18 +21,12 @@ const NavButton = ({ path, label }: { path: string; label: string }) => {
 
   return (
     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-      <Link
-        
-        to={path.slice(1)}
-        className={`px-4 py-2 rounded-md transition-all duration-300 ${
-          isActive
-            ? "color: theme.colors.primary"
-            : "text-gray-300 hover:text-primary"
-        }`}
-        
+      <a
+        href={path}  // Usar un enlace tradicional para el desplazamiento de anclaje
+        className="px-4 py-2 rounded-md transition-all duration-300 text-gray-300 hover:text-primary"
       >
         {label}
-      </Link>
+      </a>
     </motion.div>
   );
 };
@@ -65,7 +59,7 @@ export const AppLayout = () => {
             animate={{ y: 0 }}
             transition={{ type: "spring", stiffness: 200 }}
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-              scrolled ? "bg-black/90 backdrop-blur-md" : "bg-transparent"
+              scrolled ? "bg-neutral-900" : "bg-transparent"
             }`}
           >
             <div className="max-w-7xl mx-auto flex items-center px-4 py-3">
@@ -90,7 +84,7 @@ export const AppLayout = () => {
           </motion.nav>
 
           {/* SECCIONES */}
-          <main className="pt-28">
+          <main className="">
             <HeroSection />
             <ServicesSection />
             <PortfolioSection />

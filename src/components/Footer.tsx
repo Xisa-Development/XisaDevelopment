@@ -55,13 +55,13 @@ const Footer = () => {
           <div>
             <h6 className="text-lg font-semibold mb-2">Síguenos</h6>
             <div className="flex justify-center md:justify-start space-x-4">
-              <a href="#" className="text-white hover:text-[#1877F2] transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61551475666780" className="text-white hover:text-[#1877F2] transition-colors">
                 <FaFacebook size={24} />
               </a>
               <a href="#" className="text-white hover:text-[#1DA1F2] transition-colors">
                 <FaTwitter size={24} />
               </a>
-              <a href="#" className="text-white hover:text-[#E1306C] transition-colors">
+              <a href="https://www.instagram.com/xisa_development/" className="text-white hover:text-[#E1306C] transition-colors">
                 <FaInstagram size={24} />
               </a>
             </div>

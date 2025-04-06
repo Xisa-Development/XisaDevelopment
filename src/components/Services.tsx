@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { theme } from '../theme/theme';
 
-
 const services = [
   {
     title: 'eCommerce',
@@ -43,7 +42,7 @@ const ServiceCard = ({
       alt={service.title}
       className="w-36 h-36 mb-4 object-contain"
     />
-    <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+    <h3 className="dark:text-gray-300 text-xl font-semibold mb-2">{service.title}</h3>
     <p className="text-gray-600 dark:text-gray-300 text-sm">{service.description}</p>
   </motion.div>
 );

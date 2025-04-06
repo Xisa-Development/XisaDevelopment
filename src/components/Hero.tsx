@@ -5,11 +5,12 @@ import { theme } from '../theme/theme';
 export const HeroSection = () => {
   return (
     <section
-      className="relative min-h-screen flex items-center bg-fixed bg-center bg-cover"
-      style={{ backgroundImage: "url('./assets/img/header.jpg')" }}
+      className="relative w-full min-h-screen flex items-center bg-fixed bg-center bg-cover"
+      style={{ backgroundImage: "url('./assets/img/img2.jpg')",backgroundPosition: 'center',
+        backgroundSize: 'cover' }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0" />
+      <div className="absolute inset-0 bg-black/40  z-0" />
 
       {/* Contenido */}
       <motion.div
@@ -25,8 +26,8 @@ export const HeroSection = () => {
             transition={{ delay: 0.2 }}
             className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6"
           >
-            Creando experiencias
-            <span className="block text-primary" style={{color: theme.colors.primary}}>digitales memorables</span>
+            Creando Experiencias
+            <span className="block text-primary" style={{color: theme.colors.primary}}>Digitales Memorables</span>
           </motion.h1>
 
           <motion.div
@@ -40,7 +41,7 @@ export const HeroSection = () => {
               style={{ backgroundColor: theme.colors.primary }}
               className="bg-primary text-white text-lg font-semibold px-6 py-3 rounded-md transition-all"
             >
-              Ver proyectos
+              Ver Proyectos
             </motion.button>
           </motion.div>
         </div>
