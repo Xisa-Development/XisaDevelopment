@@ -1,24 +1,21 @@
 import { motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
 import { HeroSection } from "./Hero";
 import { ServicesSection } from "./Services";
 import { ContactSection } from "./ContactForm";
-import { PortfolioSection } from "./PortfolioItem";
 import Footer from "./Footer";
 import { Loader } from "./Loader";
 import { useState, useEffect } from "react";
 import FloatButton from "./FloatButton";
+import Team from "./Team";
 
 const navLinks = [
   { path: "/", label: "Inicio" },
   { path: "#services", label: "Servicios" },
-  { path: "#portfolio", label: "Portafolio" },
+  { path: "#equipo", label: "Equipo" },
   { path: "#contact", label: "Contacto" },
 ];
 
 const NavButton = ({ path, label }: { path: string; label: string }) => {
-  const location = useLocation();
-  const isActive = location.hash === path;
 
   return (
     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -89,7 +86,7 @@ export const AppLayout = () => {
             <FloatButton />
             <HeroSection />
             <ServicesSection />
-            <PortfolioSection />
+            <Team />
             <ContactSection />
             <Footer />
           </main>
