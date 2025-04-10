@@ -7,6 +7,7 @@ import { PortfolioSection } from "./PortfolioItem";
 import Footer from "./Footer";
 import { Loader } from "./Loader";
 import { useState, useEffect } from "react";
+import FloatButton from "./FloatButton";
 
 const navLinks = [
   { path: "/", label: "Inicio" },
@@ -85,6 +86,7 @@ export const AppLayout = () => {
 
           {/* SECCIONES */}
           <main className="">
+            <FloatButton />
             <HeroSection />
             <ServicesSection />
             <PortfolioSection />
