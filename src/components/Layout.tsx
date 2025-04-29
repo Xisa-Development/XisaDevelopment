@@ -16,11 +16,10 @@ const navLinks = [
 ];
 
 const NavButton = ({ path, label }: { path: string; label: string }) => {
-
   return (
     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
       <a
-        href={path}  // Usar un enlace tradicional para el desplazamiento de anclaje
+        href={path}
         className="px-4 py-2 rounded-md transition-all duration-300 text-gray-300 hover:text-primary"
       >
         {label}
@@ -32,9 +31,9 @@ const NavButton = ({ path, label }: { path: string; label: string }) => {
 export const AppLayout = () => {
   const [loading, setLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Simula carga
     const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
   }, []);
@@ -60,7 +59,7 @@ export const AppLayout = () => {
               scrolled ? "bg-neutral-900" : "bg-transparent"
             }`}
           >
-            <div className="max-w-7xl mx-auto flex items-center px-4 py-3">
+            <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -73,12 +72,59 @@ export const AppLayout = () => {
                 />
               </motion.div>
 
-              <div className="ml-auto flex gap-2">
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex gap-2">
                 {navLinks.map((link) => (
                   <NavButton key={link.path} {...link} />
                 ))}
               </div>
+
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden text-white focus:outline-none"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                <i className={`fa-solid ${isMenuOpen ? 'fa-xmark' : 'fa-bars'} text-2xl`}></i>
+              </button>
             </div>
+
+            {/* Mobile Navigation */}
+            <motion.div
+              initial={false}
+              animate={{ 
+                height: isMenuOpen ? "auto" : 0,
+                opacity: isMenuOpen ? 1 : 0
+              }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden overflow-hidden bg-neutral-900/95 backdrop-blur-sm"
+            >
+              <div className="flex flex-col py-4 px-6">
+                {navLinks.map((link, index) => (
+                  <motion.div
+                    key={link.path}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ 
+                      x: isMenuOpen ? 0 : -20,
+                      opacity: isMenuOpen ? 1 : 0
+                    }}
+                    transition={{ 
+                      delay: isMenuOpen ? index * 0.1 : 0,
+                      duration: 0.3
+                    }}
+                    className="border-b border-gray-700 last:border-b-0"
+                  >
+                    <a
+                      href={link.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center py-4 text-gray-300 hover:text-primary transition-colors duration-300"
+                    >
+                      <span className="text-lg font-medium">{link.label}</span>
+                      <i className="fa-solid fa-chevron-right ml-auto text-sm opacity-50"></i>
+                    </a>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </motion.nav>
 
           {/* SECCIONES */}

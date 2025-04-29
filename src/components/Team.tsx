@@ -23,10 +23,10 @@ const teamMembers = [
     description:
       "Desarrolladora back-end con experiencia en bases de datos y APIs.",
     socials: {
-      instagram: "",
+      instagram: "https://www.instagram.com/xime_garcia27/",
       facebook: "",
       github: "https://github.com/ximena",
-      linkedin: "https://linkedin.com/in/ximena",
+      linkedin: "www.linkedin.com/in/ximena-garcía-carmona27",
     },
   },
   {
@@ -56,11 +56,11 @@ export default function Team() {
   return (
     <section id="equipo" className="bg-white dark:bg-gray-900">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+        <div className="mx-auto max-w-screen-sm text-center mb-6 sm:mb-8 lg:mb-16">
+          <h2 className="mb-3 sm:mb-4 text-3xl sm:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
             Nuestro Equipo
           </h2>
-          <p className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
+          <p className="font-light text-gray-500 sm:mb-16 text-base sm:text-xl dark:text-gray-400">
             Conoce a nuestro equipo de desarrolladores y especialistas en
             tecnología, preparados para llevar tu proyecto al siguiente nivel.
           </p>
@@ -71,29 +71,29 @@ export default function Team() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-4 sm:gap-6 lg:gap-8 mb-6 lg:mb-16 md:grid-cols-2 lg:grid-cols-3"
         >
           {teamMembers.map((member, index) => (
             <motion.div
               key={index}
               whileHover={{ scale: 1.03 }}
-              className="bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 dark:bg-gray-800 p-6 text-center"
+              className="bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 dark:bg-gray-800 p-4 sm:p-6 text-center"
             >
               <img
-                className="w-24 h-24 mx-auto mb-4 rounded-full object-cover"
+                className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-3 sm:mb-4 rounded-full object-cover"
                 src={member.image}
                 alt={`${member.name} Avatar`}
               />
-              <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <h3 className="text-lg sm:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {member.name}
               </h3>
-              <span className="text-sm text-gray-500 dark:text-gray-400">
+              <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                 {member.role}
               </span>
-              <p className="mt-3 mb-4 text-sm font-light text-gray-500 dark:text-gray-400">
+              <p className="mt-2 sm:mt-3 mb-3 sm:mb-4 text-xs sm:text-sm font-light text-gray-500 dark:text-gray-400">
                 {member.description}
               </p>
-              <ul className="flex justify-center space-x-4 text-white text-lg">
+              <ul className="flex justify-center space-x-3 sm:space-x-4 text-white text-base sm:text-lg">
                 {Object.entries(member.socials).map(
                   ([key, url]) =>
                     url && (
