@@ -9,10 +9,10 @@ const teamMembers = [
     description:
       "Desarrollador web con experiencia en la creación de aplicaciones.",
     socials: {
-      instagram: "https://instagram.com/sahray",
-      facebook: "https://facebook.com/sahray",
-      github: "https://github.com/sahray",
-      linkedin: "https://linkedin.com/in/sahray",
+      instagram: "https://www.instagram.com/sary.aguilars/",
+      facebook: "https://www.facebook.com/sharai.aguiilar",
+      github: "https://github.com/Sahray",
+      linkedin: "https://www.linkedin.com/in/sahray-aguilar-ramirez-65435031a/",
     },
   },
   {
@@ -23,10 +23,10 @@ const teamMembers = [
     description:
       "Desarrolladora back-end con experiencia en bases de datos y APIs.",
     socials: {
-      instagram: "",
-      facebook: "",
-      github: "https://github.com/ximena",
-      linkedin: "https://linkedin.com/in/ximena",
+      instagram: "https://www.instagram.com/xime_garcia27/",
+      facebook: "https://www.facebook.com/ximena.garciacarmona.58",
+      github: "https://github.com/XimeGarcia27",
+      linkedin: "https://www.linkedin.com/in/ximena-garc%C3%ADa-carmona27/",
     },
   },
   {
@@ -37,10 +37,10 @@ const teamMembers = [
     description:
       "Desarrollador front-end con experiencia en interfaces modernas y accesibles.",
     socials: {
-      instagram: "https://instagram.com/daniel",
-      facebook: "",
-      github: "https://github.com/daniel",
-      linkedin: "",
+      instagram: "https://www.instagram.com/_daniel_mondragon_/",
+      facebook: "https://www.facebook.com/garciateemo/",
+      github: "https://github.com/Danielx80",
+      linkedin: "https://www.linkedin.com/in/danielmondrag%C3%B3n/",
     },
   },
 ];

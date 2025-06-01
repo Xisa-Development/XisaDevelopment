@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaWhatsapp , FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -58,8 +58,8 @@ const Footer = () => {
               <a href="https://www.facebook.com/profile.php?id=61551475666780" className="text-white hover:text-[#1877F2] transition-colors">
                 <FaFacebook size={24} />
               </a>
-              <a href="#" className="text-white hover:text-[#1DA1F2] transition-colors">
-                <FaTwitter size={24} />
+              <a href="https://api.whatsapp.com/send?phone=4271047437" className="text-white hover:text-[#1DA1F2] transition-colors">
+                <FaWhatsapp  size={24} />
               </a>
               <a href="https://www.instagram.com/xisa_development/" className="text-white hover:text-[#E1306C] transition-colors">
                 <FaInstagram size={24} />
